@@ -21,7 +21,7 @@ namespace TDDRockPaperScissor.Service
             return GameResult.Player1_Wins;
         }
 
-        public GameResult GetTheRoundWinner(GameResult outCome1, GameResult outCome2, GameResult outCome3)
+        public GameResult GetTheRoundWinner_old(GameResult outCome1, GameResult outCome2, GameResult outCome3)
         {
             //This code is for Player 1
             if (outCome1.Equals(GameResult.Player1_Wins) && outCome2.Equals(GameResult.Player1_Wins)
@@ -45,6 +45,30 @@ namespace TDDRockPaperScissor.Service
                 return GameResult.Player2_Wins;
             }
 
+            return GameResult.Tie;
+        }
+
+        public GameResult GetTheRoundWinner(GameResult Outcome1, GameResult Outcome2, GameResult Outcome3)
+        {
+            int Player1WinningCount = 0;
+            int Player2WinningCount = 0;
+
+            if (Outcome1.Equals(GameResult.Player1_Wins)) Player1WinningCount++;
+
+            if (Outcome2.Equals(GameResult.Player1_Wins)) Player1WinningCount++;
+
+            if (Outcome1.Equals(GameResult.Player2_Wins)) Player2WinningCount++;
+
+            if (Outcome2.Equals(GameResult.Player2_Wins)) Player2WinningCount++;
+
+            if (Player1WinningCount > Player2WinningCount)
+            {
+                return GameResult.Player1_Wins;
+            }
+            else if (Player2WinningCount > Player1WinningCount)
+            {
+                return GameResult.Player2_Wins;
+            }
             return GameResult.Tie;
         }
     }
