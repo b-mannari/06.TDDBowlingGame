@@ -6,7 +6,7 @@ namespace TDDRockPaperScissor.Tests
 {
     public class TDDRockPaperScissorTest
     {
-        RockPaperScissor rps; Choices p1Choice; Choices p2Choice;
+        RockPaperScissor rps;
         [SetUp]
         public void Setup()
         {
@@ -17,23 +17,20 @@ namespace TDDRockPaperScissor.Tests
         [Test]
         public void ShouldReturnTie_WhenPlayer1ChooseRockAndPlayer2ChooseRock()
         {
-            p1Choice = Choices.Rock; p2Choice = Choices.Rock; GameResult expectedResult = GameResult.Tie;
-            GameResult actualResult = rps.GetTheWinner(p1Choice, p2Choice);
-            Assert.AreEqual(expectedResult, actualResult);
+            GameResult actualResult = rps.GetTheWinner(Choices.Rock, Choices.Rock);
+            Assert.AreEqual(GameResult.Tie, actualResult);
         }
         [Test]
         public void ShouldReturnPlayer1Wins_WhenPlayer1ChooseRockAndPlayer2ChooseScissors()
         {
-            p1Choice = Choices.Rock; p2Choice = Choices.Scissor; GameResult expectedResult = GameResult.Player1_Wins;
-            GameResult actualResult = rps.GetTheWinner(p1Choice, p2Choice);
-            Assert.AreEqual(expectedResult, actualResult);
+            GameResult actualResult = rps.GetTheWinner(Choices.Rock, Choices.Scissor);
+            Assert.AreEqual(GameResult.Player1_Wins, actualResult);
         }
         [Test]
         public void ShouldReturnPlayer2Wins_WhenPlayer1ChooseRockAndPlayer2ChoosePaper()
         {
-            p1Choice = Choices.Rock; p2Choice = Choices.Paper; GameResult expectedResult = GameResult.Player2_Wins;
-            GameResult actualResult = rps.GetTheWinner(p1Choice, p2Choice);
-            Assert.AreEqual(expectedResult, actualResult);
+            GameResult actualResult = rps.GetTheWinner(Choices.Rock, Choices.Paper);
+            Assert.AreEqual(GameResult.Player2_Wins, actualResult);
         }
 
 
@@ -41,23 +38,20 @@ namespace TDDRockPaperScissor.Tests
         [Test]
         public void ShouldReturnTie_WhenPlayer1ChoosePaperAndPlayer2ChoosePaper()
         {
-            p1Choice = Choices.Paper; p2Choice = Choices.Paper; GameResult expectedResult = GameResult.Tie;
-            GameResult actualResult = rps.GetTheWinner(p1Choice, p2Choice);
-            Assert.AreEqual(expectedResult, actualResult);
+            GameResult actualResult = rps.GetTheWinner(Choices.Paper, Choices.Paper);
+            Assert.AreEqual(GameResult.Tie, actualResult);
         }
         [Test]
         public void ShouldReturnPlayer1Wins_WhenPlayer1ChoosePaperAndPlayer2ChooseRock()
         {
-            p1Choice = Choices.Paper; p2Choice = Choices.Rock; GameResult expectedResult = GameResult.Player1_Wins;
-            GameResult actualResult = rps.GetTheWinner(p1Choice, p2Choice);
-            Assert.AreEqual(expectedResult, actualResult);
+            GameResult actualResult = rps.GetTheWinner(Choices.Paper, Choices.Rock);
+            Assert.AreEqual(GameResult.Player1_Wins, actualResult);
         }
         [Test]
         public void ShouldReturnPlayer2Wins_WhenPlayer1ChoosePaperAndPlayer2ChooseScissors()
         {
-            p1Choice = Choices.Paper; p2Choice = Choices.Scissor; GameResult expectedResult = GameResult.Player2_Wins;
-            GameResult actualResult = rps.GetTheWinner(p1Choice, p2Choice);
-            Assert.AreEqual(expectedResult, actualResult);
+            GameResult actualResult = rps.GetTheWinner(Choices.Paper, Choices.Scissor);
+            Assert.AreEqual(GameResult.Player2_Wins, actualResult);
         }
 
 
@@ -66,25 +60,21 @@ namespace TDDRockPaperScissor.Tests
         [Test]
         public void ShouldReturnTie_WhenPlayer1ChooseScissorsAndPlayer2ChooseScissors()
         {
-            p1Choice = Choices.Scissor; p2Choice = Choices.Scissor; GameResult expectedResult = GameResult.Tie;
-            GameResult actualResult = rps.GetTheWinner(p1Choice, p2Choice);
-            Assert.AreEqual(expectedResult, actualResult);
+            GameResult actualResult = rps.GetTheWinner(Choices.Scissor, Choices.Scissor);
+            Assert.AreEqual(GameResult.Tie, actualResult);
         }
         [Test]
         public void ShouldReturnPlayer1Wins_WhenPlayer1ChooseScissorsAndPlayer2ChoosePaper()
         {
-            p1Choice = Choices.Scissor; p2Choice = Choices.Paper; GameResult expectedResult = GameResult.Player1_Wins;
-            GameResult actualResult = rps.GetTheWinner(p1Choice, p2Choice);
-            Assert.AreEqual(expectedResult, actualResult);
+            GameResult actualResult = rps.GetTheWinner(Choices.Scissor, Choices.Paper);
+            Assert.AreEqual(GameResult.Player1_Wins, actualResult);
         }
         [Test]
         public void ShouldReturnPlayer2Wins_WhenPlayer1ChooseScissorsAndPlayer2ChooseRock()
         {
-            p1Choice = Choices.Scissor; p2Choice = Choices.Rock; GameResult expectedResult = GameResult.Player2_Wins;
-            GameResult actualResult = rps.GetTheWinner(p1Choice, p2Choice);
-            Assert.AreEqual(expectedResult, actualResult);
+            GameResult actualResult = rps.GetTheWinner(Choices.Scissor, Choices.Rock);
+            Assert.AreEqual(GameResult.Player2_Wins, actualResult);
         }
-
 
 
 
