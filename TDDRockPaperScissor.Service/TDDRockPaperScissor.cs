@@ -23,6 +23,7 @@ namespace TDDRockPaperScissor.Service
 
         public GameResult GetTheRoundWinner(GameResult outCome1, GameResult outCome2, GameResult outCome3)
         {
+            //This code is for Player 1
             if (outCome1.Equals(GameResult.Player1_Wins) && outCome2.Equals(GameResult.Player1_Wins)
                 && (outCome3.Equals(GameResult.Player1_Wins) || outCome3.Equals(GameResult.Player2_Wins)))
             {
@@ -33,7 +34,7 @@ namespace TDDRockPaperScissor.Service
                 return GameResult.Player1_Wins;
             }
 
-
+            //This code is for Player 2
             if (outCome1.Equals(GameResult.Player2_Wins) && outCome2.Equals(GameResult.Player2_Wins) &&
                 (outCome3.Equals(GameResult.Player2_Wins) || outCome3.Equals(GameResult.Player1_Wins)))
             {
