@@ -24,7 +24,7 @@ namespace TDDBowlingGame.Tests
         public void Should_be_able_to_score_a_game_with_all_Zeros_in_AllEachRoll()
         {
             RollMany(20, 0);
-            Assert.AreEqual(0, g.FrameScore());
+            Assert.AreEqual(0, g.Score());
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace TDDBowlingGame.Tests
         {
             g.Roll(1);
 
-            int result = g.FrameScore();
+            int result = g.Score();
 
             Assert.AreEqual(1, result);
         }
@@ -43,7 +43,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(1);
             g.Roll(4);
 
-            int result = g.FrameScore();
+            int result = g.Score();
 
             Assert.AreEqual(5, result);
         }
@@ -55,7 +55,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(5);
             g.Roll(3);   // Spare from the next Frame
             //RollMany(17, 0);
-            Assert.AreEqual(16, g.FrameScore());
+            Assert.AreEqual(16, g.Score());
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(4);
             g.Roll(5);   // Strike from the next Frame
             //RollMany(16, 0);
-            Assert.AreEqual(28, g.FrameScore());
+            Assert.AreEqual(28, g.Score());
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(3);
             g.Roll(4); // Strike from the next Frame
             //RollMany(16, 0);
-            Assert.AreEqual(24, g.FrameScore());
+            Assert.AreEqual(24, g.Score());
         }
 
         //[Test]
@@ -100,7 +100,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(3);     // Normal pinsdown of next Frame 9
             g.Roll(4);     // Normal pinsdown of next Frame 10
             g.Roll(5);     // Normal pinsdown of next Frame 10
-            Assert.AreEqual(111, g.FrameScore());   //Expected is sum of above
+            Assert.AreEqual(111, g.Score());   //Expected is sum of above
         }
 
         [Test]
@@ -113,7 +113,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(10);    // 2nd Strike from Frame 8 
             g.Roll(3);     // Normal pinsdown of next Frame 9
             g.Roll(4);     // Normal pinsdown of next Frame 9
-            Assert.AreEqual(128, g.FrameScore());   //Expected is sum of above
+            Assert.AreEqual(128, g.Score());   //Expected is sum of above
         }
 
 
@@ -143,7 +143,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(1);     // Normal pinsdown of next Frame 9
             g.Roll(2);    // 2nd Strike from Frame 8 
 
-            Assert.AreEqual(156, g.FrameScore());   //Expected is sum of above
+            Assert.AreEqual(156, g.Score());   //Expected is sum of above
         }
 
         [Test]
@@ -179,7 +179,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(2);
             g.Roll(3);
 
-            int result = g.FrameScore();
+            int result = g.Score();
             Assert.AreEqual(117, result);
         }
 

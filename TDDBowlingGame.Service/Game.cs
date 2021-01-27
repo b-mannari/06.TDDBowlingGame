@@ -12,25 +12,25 @@
             return rolls;
         }
 
-        public int FrameScore()
+        public int Score()
         {
-            int index = 0;
+            int rollNo = 0;
             for (int frame = 0; frame < 10; frame++)
             {
-                if (rolls[index] == 10)
+                if (rolls[rollNo] == 10) // Strike
                 {
-                    score += 10 + rolls[index + 1] + rolls[index + 2];
-                    index++;
+                    score += 10 + rolls[rollNo + 1] + rolls[rollNo + 2];
+                    rollNo++;
                 }
-                else if (rolls[index] + rolls[index + 1] == 10)
+                else if (rolls[rollNo] + rolls[rollNo + 1] == 10) // Spare
                 {
-                    score += 10 + rolls[index + 2];
-                    index += 2;
+                    score += 10 + rolls[rollNo + 2];
+                    rollNo += 2;
                 }
                 else
                 {
-                    score += rolls[index] + rolls[index + 1];
-                    index += 2;
+                    score += rolls[rollNo] + rolls[rollNo + 1];
+                    rollNo += 2;
                 }
             }
             return score;
