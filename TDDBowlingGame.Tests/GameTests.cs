@@ -5,7 +5,7 @@ namespace TDDBowlingGame.Tests
 {
     public class GameTests
     {
-        private Game g;
+        private Game g; 
         [SetUp]
         public void Setup()
         {
