@@ -1,9 +1,0 @@
-C:\TFS\GitHub\05.TDDRockPaperScissor\TDDRockPaperScissor.Service\bin\Debug\netcoreapp3.1\TDDRockPaperScissor.Service.deps.json
-C:\TFS\GitHub\05.TDDRockPaperScissor\TDDRockPaperScissor.Service\bin\Debug\netcoreapp3.1\TDDRockPaperScissor.Service.dll
-C:\TFS\GitHub\05.TDDRockPaperScissor\TDDRockPaperScissor.Service\bin\Debug\netcoreapp3.1\TDDRockPaperScissor.Service.pdb
-C:\TFS\GitHub\05.TDDRockPaperScissor\TDDRockPaperScissor.Service\obj\Debug\netcoreapp3.1\TDDRockPaperScissor.Service.csprojAssemblyReference.cache
-C:\TFS\GitHub\05.TDDRockPaperScissor\TDDRockPaperScissor.Service\obj\Debug\netcoreapp3.1\TDDRockPaperScissor.Service.AssemblyInfoInputs.cache
-C:\TFS\GitHub\05.TDDRockPaperScissor\TDDRockPaperScissor.Service\obj\Debug\netcoreapp3.1\TDDRockPaperScissor.Service.AssemblyInfo.cs
-C:\TFS\GitHub\05.TDDRockPaperScissor\TDDRockPaperScissor.Service\obj\Debug\netcoreapp3.1\TDDRockPaperScissor.Service.csproj.CoreCompileInputs.cache
-C:\TFS\GitHub\05.TDDRockPaperScissor\TDDRockPaperScissor.Service\obj\Debug\netcoreapp3.1\TDDRockPaperScissor.Service.dll
-C:\TFS\GitHub\05.TDDRockPaperScissor\TDDRockPaperScissor.Service\obj\Debug\netcoreapp3.1\TDDRockPaperScissor.Service.pdb

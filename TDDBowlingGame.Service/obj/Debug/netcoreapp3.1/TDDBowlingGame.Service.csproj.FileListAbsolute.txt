@@ -1,0 +1,8 @@
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Service\bin\Debug\netcoreapp3.1\TDDBowlingGame.Service.deps.json
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Service\bin\Debug\netcoreapp3.1\TDDBowlingGame.Service.dll
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Service\bin\Debug\netcoreapp3.1\TDDBowlingGame.Service.pdb
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Service\obj\Debug\netcoreapp3.1\TDDBowlingGame.Service.AssemblyInfoInputs.cache
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Service\obj\Debug\netcoreapp3.1\TDDBowlingGame.Service.AssemblyInfo.cs
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Service\obj\Debug\netcoreapp3.1\TDDBowlingGame.Service.csproj.CoreCompileInputs.cache
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Service\obj\Debug\netcoreapp3.1\TDDBowlingGame.Service.dll
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Service\obj\Debug\netcoreapp3.1\TDDBowlingGame.Service.pdb
