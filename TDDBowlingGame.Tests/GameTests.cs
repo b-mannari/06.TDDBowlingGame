@@ -26,6 +26,16 @@ namespace TDDBowlingGame.Tests
         }
 
         [Test]
+        public void ShouldReturnScoreWithBonus_PerfectGame10PinsDownInAll10Frames()
+        {
+            RollMany(12, 10);
+
+            frameScore = g.frameScore;
+            int result = g.CummulativeScore;
+            Assert.AreEqual(300, result);
+        }
+
+        [Test]
         public void ShouldReturnScore_WhenOneRollHasSomePinsAreDown()
         {
             g.Roll(1);
@@ -60,7 +70,6 @@ namespace TDDBowlingGame.Tests
             Assert.AreEqual(16, result);
         }
 
-
         [Test]
         public void ShouldReturnScoreWithBonus_WithOneStrike()
         {
@@ -71,17 +80,6 @@ namespace TDDBowlingGame.Tests
             frameScore = g.frameScore;
             int result = g.CummulativeScore;
             Assert.AreEqual(28, result);
-        }
-
-
-        [Test]
-        public void ShouldReturnScoreWithBonus_PerfectGame10PinsDownInAll10Frames()
-        {
-            RollMany(12, 10);
-
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
-            Assert.AreEqual(300, result);
         }
 
         [Test]
