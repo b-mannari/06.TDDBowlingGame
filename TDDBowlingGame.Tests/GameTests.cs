@@ -46,13 +46,26 @@ namespace TDDBowlingGame.Tests
         }
 
         [Test]
-        public void ShouldReturnScore_WhenTwoRollsHaveSomePinsAreDown()
+        public void ShouldReturnScore_WhenTwoRollHaveSomePinsAreDown()
+        {
+            g.Roll(1);
+            g.Roll(4);
+
+            frameScore = g.frameScore;
+            int result = g.CummulativeScore;
+            Assert.AreEqual(5, result);
+        }
+
+
+        [Test]
+        public void ShouldReturnScore_WhenThreeRollsHaveSomePinsAreDown()
         {
             g.Roll(1);
             g.Roll(2);
             g.Roll(10);
             g.Roll(6);
             g.Roll(3);
+
             frameScore = g.frameScore;
             int result = g.CummulativeScore;
             Assert.AreEqual(31, result);
