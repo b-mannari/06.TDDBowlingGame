@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CvB+3y1ne9Xb7/lWfiIcN/SpyWlDDi7ASU2jUqwRLTkI2dILjquQImlzBElWR6n6FpVWUHjou+xo2mtKlWi67g==",
+  "dgSpecHash": "JlF8DcJBUfVUHRtSGLC4QXkWBaI9i41lDZSn7Jcs7W9TSbVCNybFyxq7WuTrPi6MnwzpjhFKiewYsL5Ejo7xwA==",
   "success": true,
   "projectFilePath": "C:\\TFS\\GitHub\\06.TDDBowlingGame\\TDDBowlingGame.Tests\\TDDBowlingGame.Tests.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\b.mannari\\.nuget\\packages\\microsoft.testplatform.testhost\\16.5.0\\microsoft.testplatform.testhost.16.5.0.nupkg.sha512",
     "C:\\Users\\b.mannari\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\b.mannari\\.nuget\\packages\\microsoft.win32.registry\\4.3.0\\microsoft.win32.registry.4.3.0.nupkg.sha512",
+    "C:\\Users\\b.mannari\\.nuget\\packages\\mstest.testframework\\2.1.2\\mstest.testframework.2.1.2.nupkg.sha512",
     "C:\\Users\\b.mannari\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\b.mannari\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
     "C:\\Users\\b.mannari\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",

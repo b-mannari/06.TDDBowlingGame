@@ -1,64 +1,81 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TDDBowlingGame.Service
 {
     public class Game
     {
-        public List<int> frameScore = new List<int>();
-        public int CummulativeScore { get; set; }
-
-        private readonly int[] rolls = new int[24];
-        private int CurrentRoll = 0;
-        private int idx = 0;
-        private int score = 0;
+        public List<int> FrameScore = new List<int>();
+        //public int CummulativeScore { get; set; }
+        public string IsLastGame = "";
+        private readonly int[] Rolls = new int[24];
+        private int RollIdx = 0;
+        private int Idx = 0;
+        private int Score = 0;
+        public int FrameNo = 0;
 
         public void Roll(int PinsDown)
         {
-            rolls[CurrentRoll] = PinsDown;
+            Rolls[RollIdx] = PinsDown;
 
             if (PinsDown == 10)
-            { rolls[CurrentRoll + 1] = 0; CurrentRoll++; }
+            { Rolls[RollIdx + 1] = 0; RollIdx++; }
 
-            CummulativeScore = CalculateScore();
-            CurrentRoll++;
+            CalculateScore();
+
+            RollIdx++;
         }
 
         public int CalculateScore()
         {
-            idx = 0; score = 0; frameScore = new List<int>();
-            for (int x = 0; x < 10; x++)
+            Idx = 0; Score = 0; FrameScore = new List<int>();
+            for (int Frame = 0; Frame < 10; Frame++)
             {
-                bool doubleStrike = false; int framePinsCount;
-                if (rolls[idx] == 10) // Strike
+                bool DoubleStrike = false; int PinsInFrame;
+                if (IsStrike()) // Strike
                 {
-                    if (rolls[idx] + rolls[idx + 2] == 20) doubleStrike = true;
+                    if (IsDoubleStrike()) DoubleStrike = true;
 
-                    framePinsCount = rolls[idx + 1] + rolls[idx + 2] + rolls[idx + 3];
+                    PinsInFrame = Rolls[Idx + 1] + Rolls[Idx + 2] + Rolls[Idx + 3];
 
-                    if (doubleStrike)
-                    { score += 10 + rolls[idx + 2] + rolls[idx + 3] + rolls[idx + 4]; }
+                    if (DoubleStrike)
+                    { Score += 10 + Rolls[Idx + 2] + Rolls[Idx + 3] + Rolls[Idx + 4]; }
                     else
-                    { score += 10 + rolls[idx + 2] + rolls[idx + 3]; }
+                    { Score += 10 + Rolls[Idx + 2] + Rolls[Idx + 3]; }
 
                 }
-                else if (rolls[idx] + rolls[idx + 1] == 10) // Spare
+                else if (IsSpare()) // Spare
                 {
-                    framePinsCount = rolls[idx + 1] + rolls[idx + 2];
-                    score += 10 + rolls[idx + 2];
+                    PinsInFrame = Rolls[Idx + 1] + Rolls[Idx + 2];
+                    Score += 10 + Rolls[Idx + 2];
                 }
                 else // Normal
                 {
-                    framePinsCount = rolls[idx] + rolls[idx + 1];
-                    score += rolls[idx] + rolls[idx + 1];
+                    PinsInFrame = Rolls[Idx] + Rolls[Idx + 1];
+                    Score += Rolls[Idx] + Rolls[Idx + 1];
                 }
-                if (framePinsCount > 0) 
-                    frameScore.Add(score);
 
-                idx += 2;
+                if (PinsInFrame > 0 || Frame == 0) { FrameScore.Add(Score); }
+
+                Idx += 2;
             }
-            CummulativeScore = score;
+            //CummulativeScore = score;
+            FrameNo = FrameScore.Count - 1;
 
-            return score;
+            return Score;
+        }
+
+        private bool IsStrike()
+        {
+            return (Rolls[Idx] == 10);
+        }
+        private bool IsSpare()
+        {
+            return Rolls[Idx] + Rolls[Idx + 1] == 10;
+        }
+        private bool IsDoubleStrike()
+        {
+            return Rolls[Idx] + Rolls[Idx + 2] == 20;
         }
     }
 }

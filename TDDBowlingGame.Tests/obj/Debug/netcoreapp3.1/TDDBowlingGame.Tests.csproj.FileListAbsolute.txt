@@ -96,3 +96,5 @@ C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Tests\obj\Debug\netcoreapp3.1\TDD
 C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Tests\obj\Debug\netcoreapp3.1\TDDBowlingGame.Tests.dll
 C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Tests\obj\Debug\netcoreapp3.1\TDDBowlingGame.Tests.pdb
 C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Tests\obj\Debug\netcoreapp3.1\TDDBowlingGame.Tests.genruntimeconfig.cache
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.dll

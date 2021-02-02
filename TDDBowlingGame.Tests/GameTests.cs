@@ -1,12 +1,13 @@
 using TDDBowlingGame.Service;
 using NUnit.Framework;
-using System.Collections.Generic;
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace TDDBowlingGame.Tests
 {
     public class GameTests
     {
-        public List<int> frameScore = new List<int>();
         private Game g;
 
         [SetUp]
@@ -16,12 +17,20 @@ namespace TDDBowlingGame.Tests
         }
 
         [Test]
+        public void ShouldReturnScoreWithBonus_PerfectGame10PinsDownInAll10Frames1()
+        {
+            RollMany(new int[] { 1, 2, 3, 4 });
+
+            int result = g.FrameScore[g.FrameNo];
+            Assert.AreEqual(10, result);
+        }
+
+        [Test]
         public void ShouldReturnScoreZero_WhenWeRollTheBall_And_NoPinsAreDown_InAllRoll()
         {
             RollMany(20, 0);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(0, result);
         }
 
@@ -30,18 +39,49 @@ namespace TDDBowlingGame.Tests
         {
             RollMany(12, 10);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(300, result);
         }
+
+        [Test]
+        public void ShouldReturnScoreWithBonus_When10thFrameHasSpare()
+        {
+            RollMany(18, 0); //end of 9th frame
+            //g.Roll(7);
+            //g.Roll(3);
+            //g.Roll(3);
+
+            //g.Roll(7);
+
+            RollMany(new int[] { 7, 3, 3, 7 });
+
+            int result = g.FrameScore[g.FrameNo];
+            Assert.AreEqual(13, result);
+        }
+
+
+        [Test]
+        public void ShouldReturnScoreWithBonus_When10thFrameHasStrike()
+        {
+            RollMany(18, 1); //end of 9th frame
+            //g.Roll(10);
+            //g.Roll(3);
+            //g.Roll(3);
+
+            //g.Roll(6);
+
+            RollMany(new int[] { 10, 3, 3, 6 });
+
+            int result = g.FrameScore[g.FrameNo];
+            Assert.AreEqual(34, result);
+        } 
 
         [Test]
         public void ShouldReturnScore_WhenOneRollHasSomePinsAreDown()
         {
             g.Roll(1);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(1, result);
         }
 
@@ -51,8 +91,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(1);
             g.Roll(4);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(5, result);
         }
 
@@ -66,8 +105,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(6);
             g.Roll(3);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(31, result);
         }
 
@@ -78,8 +116,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(5);
             g.Roll(3);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(16, result);
         }
 
@@ -90,8 +127,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(4);
             g.Roll(5);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(28, result);
         }
 
@@ -104,8 +140,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(0);
             g.Roll(4);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(21, result);
         }
 
@@ -121,8 +156,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(4);
             g.Roll(5);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(120, result);
         }
 
@@ -137,8 +171,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(3);
             g.Roll(4);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(128, result);
         }
 
@@ -169,8 +202,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(1);
             g.Roll(2);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(156, result);
         }
 
@@ -205,8 +237,7 @@ namespace TDDBowlingGame.Tests
             g.Roll(2);
             g.Roll(3);
 
-            frameScore = g.frameScore;
-            int result = g.CummulativeScore;
+            int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(117, result);
         }
 
@@ -215,6 +246,14 @@ namespace TDDBowlingGame.Tests
             for (int i = 0; i < rolls; i++)
             {
                 g.Roll(pins);
+            }
+        }
+
+        private void RollMany(int[] pins)
+        {
+            for (int i = 0; i < pins.Length; i++)
+            {
+                g.Roll(pins[i]);
             }
         }
 
