@@ -6,8 +6,6 @@ namespace TDDBowlingGame.Service
     public class Game
     {
         public List<int> FrameScore = new List<int>();
-        //public int CummulativeScore { get; set; }
-        public string IsLastGame = "";
         private readonly int[] Rolls = new int[24];
         private int RollIdx = 0;
         private int Idx = 0;
@@ -16,15 +14,22 @@ namespace TDDBowlingGame.Service
 
         public void Roll(int PinsDown)
         {
-            Rolls[RollIdx] = PinsDown;
+            if (RollIdx >= 24)
+            {
+                throw new IndexOutOfRangeException("Game Over!!");
+            }
+            else
+            {
+                Rolls[RollIdx] = PinsDown;
 
-            if (PinsDown == 10)
-            { Rolls[RollIdx + 1] = 0; RollIdx++; }
+                if (PinsDown == 10)
+                { Rolls[RollIdx + 1] = 0; RollIdx++; }
 
-            CalculateScore();
+                CalculateScore();
 
-            RollIdx++;
-        }
+                RollIdx++;
+            }
+        } 
 
         public int CalculateScore()
         {
@@ -59,7 +64,6 @@ namespace TDDBowlingGame.Service
 
                 Idx += 2;
             }
-            //CummulativeScore = score;
             FrameNo = FrameScore.Count - 1;
 
             return Score;

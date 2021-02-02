@@ -16,8 +16,18 @@ namespace TDDBowlingGame.Tests
             g = new Game();
         }
 
+        [ExpectedException(typeof(IndexOutOfRangeException))]
         [Test]
-        public void ShouldReturnScoreWithBonus_PerfectGame10PinsDownInAll10Frames1()
+        public void ShouldReturnGameOver_WhenThePlayerBolwsMoreThanExpetedRolls()
+        {
+            RollMany(24, 1);
+
+            var exp = Assert.Throws<IndexOutOfRangeException>(() => g.Roll(25));
+            Assert.AreEqual("Game Over!!", exp.Message);
+        }
+
+        [Test]
+        public void ShouldReturnScore_When2FramesAreRolled()
         {
             RollMany(new int[] { 1, 2, 3, 4 });
 
@@ -47,34 +57,23 @@ namespace TDDBowlingGame.Tests
         public void ShouldReturnScoreWithBonus_When10thFrameHasSpare()
         {
             RollMany(18, 0); //end of 9th frame
-            //g.Roll(7);
-            //g.Roll(3);
-            //g.Roll(3);
-
-            //g.Roll(7);
-
+            //g.Roll(7); //g.Roll(3); //g.Roll(3); //g.Roll(7);
             RollMany(new int[] { 7, 3, 3, 7 });
 
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(13, result);
         }
 
-
         [Test]
         public void ShouldReturnScoreWithBonus_When10thFrameHasStrike()
         {
             RollMany(18, 1); //end of 9th frame
-            //g.Roll(10);
-            //g.Roll(3);
-            //g.Roll(3);
-
-            //g.Roll(6);
-
-            RollMany(new int[] { 10, 3, 3, 6 });
+            //g.Roll(10); //g.Roll(3); //g.Roll(3); //g.Roll(6);
+            RollMany(new int[] { 10, 3, 3 });
 
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(34, result);
-        } 
+        }
 
         [Test]
         public void ShouldReturnScore_WhenOneRollHasSomePinsAreDown()
