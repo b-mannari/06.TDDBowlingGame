@@ -5,81 +5,79 @@ namespace TDDBowlingGame.Service
 {
     public class Game
     {
+        public int FrameNo = 0;
         public List<int> FrameScore = new List<int>();
         private readonly int[] Rolls = new int[24];
-        private int RollIdx = 0;
-        private int Idx = 0;
-        private int Score = 0;
-        public int FrameNo = 0;
+        private int CurrentRollNo = 0;
 
         public void Roll(int PinsDown)
         {
-            if (RollIdx >= 24)
+            if (CurrentRollNo >= 24)
             {
                 throw new IndexOutOfRangeException("Game Over!!");
             }
             else
             {
-                Rolls[RollIdx] = PinsDown;
+                Rolls[CurrentRollNo] = PinsDown;
 
                 if (PinsDown == 10)
-                { Rolls[RollIdx + 1] = 0; RollIdx++; }
+                { Rolls[CurrentRollNo + 1] = 0; CurrentRollNo++; }
 
                 CalculateScore();
 
-                RollIdx++;
+                CurrentRollNo++;
             }
         } 
 
         public int CalculateScore()
         {
-            Idx = 0; Score = 0; FrameScore = new List<int>();
+            int Index = 0; int Score = 0; FrameScore = new List<int>();
             for (int Frame = 0; Frame < 10; Frame++)
             {
                 bool DoubleStrike = false; int PinsInFrame;
-                if (IsStrike()) // Strike
+                if (IsStrike(Index)) // Strike
                 {
-                    if (IsDoubleStrike()) DoubleStrike = true;
+                    if (IsDoubleStrike(Index)) DoubleStrike = true;
 
-                    PinsInFrame = Rolls[Idx + 1] + Rolls[Idx + 2] + Rolls[Idx + 3];
+                    PinsInFrame = Rolls[Index + 1] + Rolls[Index + 2] + Rolls[Index + 3];
 
                     if (DoubleStrike)
-                    { Score += 10 + Rolls[Idx + 2] + Rolls[Idx + 3] + Rolls[Idx + 4]; }
+                    { Score += 10 + Rolls[Index + 2] + Rolls[Index + 3] + Rolls[Index + 4]; }
                     else
-                    { Score += 10 + Rolls[Idx + 2] + Rolls[Idx + 3]; }
+                    { Score += 10 + Rolls[Index + 2] + Rolls[Index + 3]; }
 
                 }
-                else if (IsSpare()) // Spare
+                else if (IsSpare(Index)) // Spare
                 {
-                    PinsInFrame = Rolls[Idx + 1] + Rolls[Idx + 2];
-                    Score += 10 + Rolls[Idx + 2];
+                    PinsInFrame = Rolls[Index + 1] + Rolls[Index + 2];
+                    Score += 10 + Rolls[Index + 2];
                 }
                 else // Normal
                 {
-                    PinsInFrame = Rolls[Idx] + Rolls[Idx + 1];
-                    Score += Rolls[Idx] + Rolls[Idx + 1];
+                    PinsInFrame = Rolls[Index] + Rolls[Index + 1];
+                    Score += Rolls[Index] + Rolls[Index + 1];
                 }
 
                 if (PinsInFrame > 0 || Frame == 0) { FrameScore.Add(Score); }
 
-                Idx += 2;
+                Index += 2;
             }
             FrameNo = FrameScore.Count - 1;
 
             return Score;
         }
 
-        private bool IsStrike()
+        private bool IsStrike(int Index)
         {
-            return (Rolls[Idx] == 10);
+            return (Rolls[Index] == 10);
         }
-        private bool IsSpare()
+        private bool IsSpare(int Index)
         {
-            return Rolls[Idx] + Rolls[Idx + 1] == 10;
+            return Rolls[Index] + Rolls[Index + 1] == 10;
         }
-        private bool IsDoubleStrike()
+        private bool IsDoubleStrike(int Index)
         {
-            return Rolls[Idx] + Rolls[Idx + 2] == 20;
+            return Rolls[Index] + Rolls[Index + 2] == 20;
         }
     }
 }

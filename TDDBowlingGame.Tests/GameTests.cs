@@ -87,23 +87,17 @@ namespace TDDBowlingGame.Tests
         [Test]
         public void ShouldReturnScore_WhenTwoRollHaveSomePinsAreDown()
         {
-            g.Roll(1);
-            g.Roll(4);
-
+            //g.Roll(1); //g.Roll(4);
+            RollMany(new int[] { 1, 4 });
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(5, result);
         }
 
-
         [Test]
         public void ShouldReturnScore_WhenThreeRollsHaveSomePinsAreDown()
         {
-            g.Roll(1);
-            g.Roll(2);
-            g.Roll(10);
-            g.Roll(6);
-            g.Roll(3);
-
+            //g.Roll(1); //g.Roll(2); //g.Roll(10); //g.Roll(6); //g.Roll(3);
+            RollMany(new int[] { 1, 2, 10, 6, 3 });
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(31, result);
         }
@@ -111,10 +105,8 @@ namespace TDDBowlingGame.Tests
         [Test]
         public void ShouldReturnScoreWithBonus_WithOneSpare()
         {
-            g.Roll(5);
-            g.Roll(5);
-            g.Roll(3);
-
+            //g.Roll(5); //g.Roll(5); //g.Roll(3);
+            RollMany(new int[] { 5, 5, 3 });
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(16, result);
         }
@@ -122,10 +114,8 @@ namespace TDDBowlingGame.Tests
         [Test]
         public void ShouldReturnScoreWithBonus_WithOneStrike()
         {
-            g.Roll(10);
-            g.Roll(4);
-            g.Roll(5);
-
+            //g.Roll(10); //g.Roll(4); //g.Roll(5);
+            RollMany(new int[] { 10, 4, 5 });
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(28, result);
         }
@@ -133,12 +123,8 @@ namespace TDDBowlingGame.Tests
         [Test]
         public void ShouldReturnScoreWithBonus_WithOneStrike_2ndTest()
         {
-            g.Roll(0);
-            g.Roll(3);
-            g.Roll(10);
-            g.Roll(0);
-            g.Roll(4);
-
+            //g.Roll(0); //g.Roll(3); //g.Roll(10); //g.Roll(0); //g.Roll(4);
+            RollMany(new int[] { 0, 3, 10, 0, 4 });
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(21, result);
         }
