@@ -1,11 +1,13 @@
 using TDDBowlingGame.Service;
 using NUnit.Framework;
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Assert = NUnit.Framework.Assert;
+//using Moq;  
 
 namespace TDDBowlingGame.Tests
 {
+    [TestFixture] 
     public class GameTests
     {
         private Game g;
@@ -13,10 +15,9 @@ namespace TDDBowlingGame.Tests
         [SetUp]
         public void Setup()
         {
-            g = new Game();
+            g = new Game(); 
         }
 
-        [ExpectedException(typeof(IndexOutOfRangeException))]
         [Test]
         public void ShouldReturnGameOver_WhenThePlayerBolwsMoreThanExpetedRolls()
         {
@@ -25,7 +26,7 @@ namespace TDDBowlingGame.Tests
             var exp = Assert.Throws<IndexOutOfRangeException>(() => g.Roll(25));
             Assert.AreEqual("Game Over!!", exp.Message);
         }
-
+        
         [Test]
         public void ShouldReturnScore_When2FramesAreRolled()
         {
@@ -57,7 +58,6 @@ namespace TDDBowlingGame.Tests
         public void ShouldReturnScoreWithBonus_When10thFrameHasSpare()
         {
             RollMany(18, 0); //end of 9th frame
-            //g.Roll(7); //g.Roll(3); //g.Roll(3); //g.Roll(7);
             RollMany(new int[] { 7, 3, 3, 7 });
 
             int result = g.FrameScore[g.FrameNo];
@@ -68,7 +68,6 @@ namespace TDDBowlingGame.Tests
         public void ShouldReturnScoreWithBonus_When10thFrameHasStrike()
         {
             RollMany(18, 1); //end of 9th frame
-            //g.Roll(10); //g.Roll(3); //g.Roll(3); //g.Roll(6);
             RollMany(new int[] { 10, 3, 3 });
 
             int result = g.FrameScore[g.FrameNo];
@@ -79,7 +78,7 @@ namespace TDDBowlingGame.Tests
         public void ShouldReturnScore_WhenOneRollHasSomePinsAreDown()
         {
             g.Roll(1);
-
+           
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(1, result);
         }
@@ -87,7 +86,6 @@ namespace TDDBowlingGame.Tests
         [Test]
         public void ShouldReturnScore_WhenTwoRollHaveSomePinsAreDown()
         {
-            //g.Roll(1); //g.Roll(4);
             RollMany(new int[] { 1, 4 });
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(5, result);
@@ -96,7 +94,6 @@ namespace TDDBowlingGame.Tests
         [Test]
         public void ShouldReturnScore_WhenThreeRollsHaveSomePinsAreDown()
         {
-            //g.Roll(1); //g.Roll(2); //g.Roll(10); //g.Roll(6); //g.Roll(3);
             RollMany(new int[] { 1, 2, 10, 6, 3 });
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(31, result);
@@ -105,7 +102,6 @@ namespace TDDBowlingGame.Tests
         [Test]
         public void ShouldReturnScoreWithBonus_WithOneSpare()
         {
-            //g.Roll(5); //g.Roll(5); //g.Roll(3);
             RollMany(new int[] { 5, 5, 3 });
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(16, result);
@@ -114,7 +110,6 @@ namespace TDDBowlingGame.Tests
         [Test]
         public void ShouldReturnScoreWithBonus_WithOneStrike()
         {
-            //g.Roll(10); //g.Roll(4); //g.Roll(5);
             RollMany(new int[] { 10, 4, 5 });
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(28, result);
@@ -123,7 +118,6 @@ namespace TDDBowlingGame.Tests
         [Test]
         public void ShouldReturnScoreWithBonus_WithOneStrike_2ndTest()
         {
-            //g.Roll(0); //g.Roll(3); //g.Roll(10); //g.Roll(0); //g.Roll(4);
             RollMany(new int[] { 0, 3, 10, 0, 4 });
             int result = g.FrameScore[g.FrameNo];
             Assert.AreEqual(21, result);

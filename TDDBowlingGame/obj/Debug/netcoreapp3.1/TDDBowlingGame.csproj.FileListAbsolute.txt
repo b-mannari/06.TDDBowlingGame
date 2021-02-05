@@ -11,3 +11,6 @@ C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame\obj\Debug\netcoreapp3.1\TDDBowlin
 C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame\obj\Debug\netcoreapp3.1\TDDBowlingGame.dll
 C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame\obj\Debug\netcoreapp3.1\TDDBowlingGame.pdb
 C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame\obj\Debug\netcoreapp3.1\TDDBowlingGame.genruntimeconfig.cache
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame\bin\Debug\netcoreapp3.1\Moq.dll
+C:\TFS\GitHub\06.TDDBowlingGame\TDDBowlingGame\obj\Debug\netcoreapp3.1\TDDBowlingGame.csproj.CopyComplete
